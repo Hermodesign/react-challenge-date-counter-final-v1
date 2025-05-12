@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
 
+function formatDate(date) {
+  return new Intl.DateTimeFormat("sr-Latn-RS", {
+    weekday: "short", // Pon, Uto, Sre, itd.
+    year: "numeric",
+    month: "short", // jan, feb, mart...
+    day: "numeric",
+  }).format(date);
+}
+
 export default function App() {
   return (
     <div className="app">
@@ -28,7 +37,7 @@ function Counter() {
 
   return (
     <div className="counter">
-      <h1 className="title">Brojač Dana</h1>
+      <h1 className="title">Brojač dana</h1>
 
       <div className="controls">
         <div className="control">
@@ -52,7 +61,7 @@ function Counter() {
                 ? `Za ${count} dana biće: `
                 : `${-count} dana ranije bilo je:`}
             </span>
-            <strong>{date.toDateString()}</strong>
+            <strong>{formatDate(date)}</strong>
           </>
         )}
       </p>
